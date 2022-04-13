@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PT2-Team1.1-Dédisclasik", "PT2-Team1.1-Dédisclasik\PT2-Team1.1-Dédisclasik.csproj", "{BA4344A4-A9FB-41FF-86A1-41741D6E6397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PT2-Team1.1-Dédisclasik-Test", "PT2-Team1.1-Dédisclasik-Test\PT2-Team1.1-Dédisclasik-Test.csproj", "{254E2C8C-215B-44AD-998C-E44CA19E443C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA4344A4-A9FB-41FF-86A1-41741D6E6397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4344A4-A9FB-41FF-86A1-41741D6E6397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4344A4-A9FB-41FF-86A1-41741D6E6397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4344A4-A9FB-41FF-86A1-41741D6E6397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254E2C8C-215B-44AD-998C-E44CA19E443C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254E2C8C-215B-44AD-998C-E44CA19E443C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254E2C8C-215B-44AD-998C-E44CA19E443C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254E2C8C-215B-44AD-998C-E44CA19E443C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8309E55-A915-422D-9843-8C1A36459ADA}
+	EndGlobalSection
+EndGlobal

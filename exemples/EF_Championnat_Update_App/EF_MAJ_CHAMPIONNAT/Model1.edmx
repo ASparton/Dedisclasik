@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CHAMPIONNATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EQUIPES">
+          <Key>
+            <PropertyRef Name="ID_EQUIPE" />
+          </Key>
+          <Property Name="ID_EQUIPE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VILLE" Type="char" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JOUEURS">
+          <Key>
+            <PropertyRef Name="ID_JOUEUR" />
+          </Key>
+          <Property Name="ID_JOUEUR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EQUIPE" Type="int" Nullable="false" />
+          <Property Name="NOM" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="SALAIRE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RENCONTRES">
+          <Key>
+            <PropertyRef Name="ID_RENCONTRE" />
+          </Key>
+          <Property Name="ID_RENCONTRE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EQUIPE_RECEVOIR" Type="int" Nullable="false" />
+          <Property Name="ID_EQUIPE_VISITER" Type="int" Nullable="false" />
+          <Property Name="SCORELOCAUX" Type="char" MaxLength="32" />
+          <Property Name="SCOREVISITEURS" Type="char" MaxLength="32" />
+        </EntityType>
+        <Association Name="FK_JOUEURS_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="JOUEURS" Type="Self.JOUEURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Principal>
+            <Dependent Role="JOUEURS">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENCONTRES_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="RENCONTRES" Type="Self.RENCONTRES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Principal>
+            <Dependent Role="RENCONTRES">
+              <PropertyRef Name="ID_EQUIPE_RECEVOIR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENCONTRES_EQUIPES1">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="RENCONTRES" Type="Self.RENCONTRES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Principal>
+            <Dependent Role="RENCONTRES">
+              <PropertyRef Name="ID_EQUIPE_VISITER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AfficheInfosJoueur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdJoueur" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AfficheJoueur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Num" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertEquipe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ville" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertJoueur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="char" Mode="In" />
+          <Parameter Name="NumEquipe" Type="int" Mode="In" />
+          <Parameter Name="Salaire" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListeRencontresParEquipe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ModifieSalaire" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdJoueur" Type="int" Mode="In" />
+          <Parameter Name="NewSalaire" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RencontresDuneEquipe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEquipe" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CHAMPIONNATModelStoreContainer">
+          <EntitySet Name="EQUIPES" EntityType="Self.EQUIPES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JOUEURS" EntityType="Self.JOUEURS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RENCONTRES" EntityType="Self.RENCONTRES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_JOUEURS_EQUIPES" Association="Self.FK_JOUEURS_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="JOUEURS" EntitySet="JOUEURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENCONTRES_EQUIPES" Association="Self.FK_RENCONTRES_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="RENCONTRES" EntitySet="RENCONTRES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENCONTRES_EQUIPES1" Association="Self.FK_RENCONTRES_EQUIPES1">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="RENCONTRES" EntitySet="RENCONTRES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CHAMPIONNATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EQUIPES">
+          <Key>
+            <PropertyRef Name="ID_EQUIPE" />
+          </Key>
+          <Property Name="ID_EQUIPE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VILLE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="JOUEURS" Relationship="Self.FK_JOUEURS_EQUIPES" FromRole="EQUIPES" ToRole="JOUEURS" />
+          <NavigationProperty Name="RENCONTRES" Relationship="Self.FK_RENCONTRES_EQUIPES" FromRole="EQUIPES" ToRole="RENCONTRES" />
+          <NavigationProperty Name="RENCONTRES1" Relationship="Self.FK_RENCONTRES_EQUIPES1" FromRole="EQUIPES" ToRole="RENCONTRES" />
+        </EntityType>
+        <EntityType Name="JOUEURS">
+          <Key>
+            <PropertyRef Name="ID_JOUEUR" />
+          </Key>
+          <Property Name="ID_JOUEUR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EQUIPE" Type="Int32" Nullable="false" />
+          <Property Name="NOM" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SALAIRE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EQUIPES" Relationship="Self.FK_JOUEURS_EQUIPES" FromRole="JOUEURS" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="RENCONTRES">
+          <Key>
+            <PropertyRef Name="ID_RENCONTRE" />
+          </Key>
+          <Property Name="ID_RENCONTRE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EQUIPE_RECEVOIR" Type="Int32" Nullable="false" />
+          <Property Name="ID_EQUIPE_VISITER" Type="Int32" Nullable="false" />
+          <Property Name="SCORELOCAUX" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="SCOREVISITEURS" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="EQUIPES" Relationship="Self.FK_RENCONTRES_EQUIPES" FromRole="RENCONTRES" ToRole="EQUIPES" />
+          <NavigationProperty Name="EQUIPES1" Relationship="Self.FK_RENCONTRES_EQUIPES1" FromRole="RENCONTRES" ToRole="EQUIPES" />
+        </EntityType>
+        <Association Name="FK_JOUEURS_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="JOUEURS" Type="Self.JOUEURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Principal>
+            <Dependent Role="JOUEURS">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENCONTRES_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="RENCONTRES" Type="Self.RENCONTRES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Principal>
+            <Dependent Role="RENCONTRES">
+              <PropertyRef Name="ID_EQUIPE_RECEVOIR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENCONTRES_EQUIPES1">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="RENCONTRES" Type="Self.RENCONTRES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="ID_EQUIPE" />
+            </Principal>
+            <Dependent Role="RENCONTRES">
+              <PropertyRef Name="ID_EQUIPE_VISITER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CHAMPIONNATEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EQUIPES" EntityType="Self.EQUIPES" />
+          <EntitySet Name="JOUEURS" EntityType="Self.JOUEURS" />
+          <EntitySet Name="RENCONTRES" EntityType="Self.RENCONTRES" />
+          <AssociationSet Name="FK_JOUEURS_EQUIPES" Association="Self.FK_JOUEURS_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="JOUEURS" EntitySet="JOUEURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENCONTRES_EQUIPES" Association="Self.FK_RENCONTRES_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="RENCONTRES" EntitySet="RENCONTRES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENCONTRES_EQUIPES1" Association="Self.FK_RENCONTRES_EQUIPES1">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="RENCONTRES" EntitySet="RENCONTRES" />
+          </AssociationSet>
+          <FunctionImport Name="AfficheInfosJoueur">
+            <Parameter Name="IdJoueur" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AfficheJoueur" ReturnType="Collection(CHAMPIONNATModel.AfficheJoueur_Result)">
+            <Parameter Name="Num" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertEquipe" ReturnType="Collection(CHAMPIONNATModel.InsertEquipe_Result)">
+            <Parameter Name="Ville" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertJoueur">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="NumEquipe" Mode="In" Type="Int32" />
+            <Parameter Name="Salaire" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListeRencontresParEquipe" />
+          <FunctionImport Name="ModifieSalaire" ReturnType="Collection(CHAMPIONNATModel.ModifieSalaire_Result)">
+            <Parameter Name="IdJoueur" Mode="In" Type="Int32" />
+            <Parameter Name="NewSalaire" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RencontresDuneEquipe" ReturnType="Collection(CHAMPIONNATModel.RencontresDuneEquipe_Result)">
+            <Parameter Name="IdEquipe" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AfficheJoueur_Result">
+          <Property Type="Int32" Name="ID_JOUEUR" Nullable="false" />
+          <Property Type="Int32" Name="ID_EQUIPE" Nullable="false" />
+          <Property Type="String" Name="NOM" Nullable="false" MaxLength="32" />
+          <Property Type="Int32" Name="SALAIRE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="InsertEquipe_Result">
+          <Property Type="Int32" Name="ID_EQUIPE" Nullable="false" />
+          <Property Type="String" Name="VILLE" Nullable="false" MaxLength="32" />
+        </ComplexType>
+        <ComplexType Name="ModifieSalaire_Result">
+          <Property Type="Int32" Name="ID_JOUEUR" Nullable="false" />
+          <Property Type="Int32" Name="ID_EQUIPE" Nullable="false" />
+          <Property Type="String" Name="NOM" Nullable="false" MaxLength="32" />
+          <Property Type="Int32" Name="SALAIRE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RencontresDuneEquipe_Result">
+          <Property Type="String" Name="VILLE" Nullable="false" MaxLength="32" />
+          <Property Type="String" Name="VILLE1" Nullable="false" MaxLength="32" />
+          <Property Type="String" Name="SCORELOCAUX" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="SCOREVISITEURS" Nullable="true" MaxLength="32" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CHAMPIONNATModelStoreContainer" CdmEntityContainer="CHAMPIONNATEntities">
+          <EntitySetMapping Name="EQUIPES">
+            <EntityTypeMapping TypeName="CHAMPIONNATModel.EQUIPES">
+              <MappingFragment StoreEntitySet="EQUIPES">
+                <ScalarProperty Name="ID_EQUIPE" ColumnName="ID_EQUIPE" />
+                <ScalarProperty Name="VILLE" ColumnName="VILLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JOUEURS">
+            <EntityTypeMapping TypeName="CHAMPIONNATModel.JOUEURS">
+              <MappingFragment StoreEntitySet="JOUEURS">
+                <ScalarProperty Name="ID_JOUEUR" ColumnName="ID_JOUEUR" />
+                <ScalarProperty Name="ID_EQUIPE" ColumnName="ID_EQUIPE" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="SALAIRE" ColumnName="SALAIRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RENCONTRES">
+            <EntityTypeMapping TypeName="CHAMPIONNATModel.RENCONTRES">
+              <MappingFragment StoreEntitySet="RENCONTRES">
+                <ScalarProperty Name="ID_RENCONTRE" ColumnName="ID_RENCONTRE" />
+                <ScalarProperty Name="ID_EQUIPE_RECEVOIR" ColumnName="ID_EQUIPE_RECEVOIR" />
+                <ScalarProperty Name="ID_EQUIPE_VISITER" ColumnName="ID_EQUIPE_VISITER" />
+                <ScalarProperty Name="SCORELOCAUX" ColumnName="SCORELOCAUX" />
+                <ScalarProperty Name="SCOREVISITEURS" ColumnName="SCOREVISITEURS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AfficheInfosJoueur" FunctionName="CHAMPIONNATModel.Store.AfficheInfosJoueur" />
+          <FunctionImportMapping FunctionImportName="AfficheJoueur" FunctionName="CHAMPIONNATModel.Store.AfficheJoueur">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CHAMPIONNATModel.AfficheJoueur_Result">
+                <ScalarProperty Name="ID_JOUEUR" ColumnName="ID_JOUEUR" />
+                <ScalarProperty Name="ID_EQUIPE" ColumnName="ID_EQUIPE" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="SALAIRE" ColumnName="SALAIRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertEquipe" FunctionName="CHAMPIONNATModel.Store.InsertEquipe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CHAMPIONNATModel.InsertEquipe_Result">
+                <ScalarProperty Name="ID_EQUIPE" ColumnName="ID_EQUIPE" />
+                <ScalarProperty Name="VILLE" ColumnName="VILLE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertJoueur" FunctionName="CHAMPIONNATModel.Store.InsertJoueur" />
+          <FunctionImportMapping FunctionImportName="ListeRencontresParEquipe" FunctionName="CHAMPIONNATModel.Store.ListeRencontresParEquipe" />
+          <FunctionImportMapping FunctionImportName="ModifieSalaire" FunctionName="CHAMPIONNATModel.Store.ModifieSalaire">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CHAMPIONNATModel.ModifieSalaire_Result">
+                <ScalarProperty Name="ID_JOUEUR" ColumnName="ID_JOUEUR" />
+                <ScalarProperty Name="ID_EQUIPE" ColumnName="ID_EQUIPE" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="SALAIRE" ColumnName="SALAIRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RencontresDuneEquipe" FunctionName="CHAMPIONNATModel.Store.RencontresDuneEquipe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CHAMPIONNATModel.RencontresDuneEquipe_Result">
+                <ScalarProperty Name="VILLE" ColumnName="VILLE" />
+                <ScalarProperty Name="VILLE1" ColumnName="VILLE1" />
+                <ScalarProperty Name="SCORELOCAUX" ColumnName="SCORELOCAUX" />
+                <ScalarProperty Name="SCOREVISITEURS" ColumnName="SCOREVISITEURS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

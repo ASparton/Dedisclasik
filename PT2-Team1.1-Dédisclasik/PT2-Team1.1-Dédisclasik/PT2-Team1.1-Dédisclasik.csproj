@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA4344A4-A9FB-41FF-86A1-41741D6E6397}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PT2_Team1._1_Dédisclasik</RootNamespace>
+    <AssemblyName>PT2-Team1.1-Dédisclasik</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminView.Designer.cs">
+      <DependentUpon>AdminView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Album.cs" />
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomePageView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomePageView.designer.cs">
+      <DependentUpon>HomePageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoLoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoLoan.Designer.cs">
+      <DependentUpon>InfoLoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoSub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoSub.designer.cs">
+      <DependentUpon>InfoSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan.cs" />
+    <Compile Include="LoansView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoansView.designer.cs">
+      <DependentUpon>LoansView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagination.cs" />
+    <Compile Include="PurgeVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurgeVerification.Designer.cs">
+      <DependentUpon>PurgeVerification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Register.cs" />
+    <Compile Include="RegisterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterView.Designer.cs">
+      <DependentUpon>RegisterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subscriber.cs" />
+    <Compile Include="SubscriberView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubscriberView.Designer.cs">
+      <DependentUpon>SubscriberView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DateUtils.cs" />
+    <Compile Include="TestUtils.cs" />
+    <EmbeddedResource Include="AdminView.resx">
+      <DependentUpon>AdminView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomePageView.resx">
+      <DependentUpon>HomePageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoLoan.resx">
+      <DependentUpon>InfoLoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoSub.resx">
+      <DependentUpon>InfoSub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoansView.resx">
+      <DependentUpon>LoansView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurgeVerification.resx">
+      <DependentUpon>PurgeVerification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterView.resx">
+      <DependentUpon>RegisterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubscriberView.resx">
+      <DependentUpon>SubscriberView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oeil-ouvert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oeil-ferme.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

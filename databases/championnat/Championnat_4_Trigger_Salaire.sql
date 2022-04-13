@@ -1,0 +1,17 @@
+-- Pas de salaire au-dessus de 100 000 !!!
+
+CREATE OR ALTER TRIGGER OnInsertUpdateJoueur
+   ON JOUEURS
+   AFTER INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @Salaire int, @IdJoueur int
+
+	-- on remet a 100000 tous les « interdits » presents dans INSERTED
+	UPDATE JOUEURS
+	SET SALAIRE = 100000
+	FROM JOUEURS
+		INNER JOIN INSERTED ON JOUEURS.ID_JOUEUR = INSERTED.ID_JOUEUR
+		WHERE INSERTED.SALAIRE > 100000
+
+END
